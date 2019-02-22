@@ -1,0 +1,13 @@
+PAGINA TEST - ADMIN 
+{% if user.is_authenticated %}
+    Hi {{ user.username }}!
+    <ul>
+        <li><a href='{% url "tabla01_list" %}'>Tabla</a></li>
+        <hr>
+        <li><a href="{% url 'cerrar_sesion' %}">Salir</a></li>
+    </ul>
+{% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">login</a>
+    <br>
+{% endif %}

@@ -11,7 +11,10 @@ django_tracking es un proyecto personal para realizar auditoria a los registros 
 ## Instalando el proyecto
  
 - Instalar pip `sudo apt-get install python-pip`
-- Instalar enviroment `sudo pip install virtualenv env_log`
+- Instalar enviroment `sudo pip install virtualenv`
+- Crear un entorno virtual virtualenv env_log
+- activar entorno `source env_log\bin\active`
+
 
  Descargar el git y el enviroment (.env)
  - Luego instalar los requerimientos con el entorno activado :
