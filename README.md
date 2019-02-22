@@ -1,0 +1,2 @@
+# django_tracking_user
+django_tracking
