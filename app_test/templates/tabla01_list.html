@@ -10,42 +10,6 @@
 {% endif %}
 
 <h3>Lista de registros</h3>
-<a href='{% url "tabla01_create" %}'>Crear Registro</a>
-<hr />
-<table border="1">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Nombre</th>
-            <th>created</th>
-            <th>modified</th>
-            <th>Acciones</th>
-        </tr>
-    </thead>
-{% for item in object_list %}
-    <tbody>
-        <tr>
-            <td>{{ forloop.counter }}</td>
-            <td>{{ item.nombre }}</td>
-            <td>
-                {{ item.created_by }} - {{ item.created|date:'d/m/Y H:i:s' }}
-            </td>
-            <td>
-                {{ item.modified_by }} - {{ item.modified|date:'d/m/Y H:i:s' }}
-            </td>
-            <td>
-                <a href = '{% url "tabla01_update" item.id %}'>Modificar</a>
-            </td>
-            <td>
-                <a href = '{% url "tabla01_delete" item.id %}'>Eliminar</a>
-            </td>
-        </tr>
-
-    </tbody>
-    
-{% endfor %}   
-</table>
-<br><br>
 <hr>
 {% if user.is_authenticated %}
     Hi <strong>{{ user.username }}!</strong>
@@ -53,8 +17,44 @@
         <li><a href="{% url 'home' %}"> INICIO</a></li>
         <li><a href="{% url 'cerrar_sesion' %}">Salir</a></li>
     </ul>
+    <hr>
+    <a href='{% url "tabla01_create" %}'>Crear Registro</a>
+    <hr />
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>created</th>
+                <th>modified</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+    {% for item in object_list %}
+        <tbody>
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ item.nombre }}</td>
+                <td>
+                    {{ item.created_by }} - {{ item.created|date:'d/m/Y H:i:s' }}
+                </td>
+                <td>
+                    {{ item.modified_by }} - {{ item.modified|date:'d/m/Y H:i:s' }}
+                </td>
+                <td>
+                    <a href = '{% url "tabla01_update" item.id %}'>Modificar</a>
+                </td>
+                <td>
+                    <a href = '{% url "tabla01_delete" item.id %}'>Eliminar</a>
+                </td>
+            </tr>
+
+        </tbody>
+        
+    {% endfor %}   
+    </table>
 {% else %}
-    <p>You are not logged in</p>
+    <p>Debes loguearte para acceder a los datos</p>
     <a href="{% url 'login' %}">login</a>
     <br>
 {% endif %}
