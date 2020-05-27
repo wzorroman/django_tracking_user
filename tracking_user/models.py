@@ -17,7 +17,7 @@ class AuditableModel(models.Model):
     modified_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='%(class)s_modidied_by')
 
     class Meta:
-        abstract = True        
+        abstract = True
     
     def save(self, *args, **kwargs):
         user = get_current_user()
