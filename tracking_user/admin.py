@@ -15,7 +15,8 @@ class AuditableAdmin(admin.ModelAdmin):
     def save_formset(self, request, form, formset, change):
         instances = formset.save(commit=False)
         for instance in instances:
-            if isinstance(instance, AuditableModel): #Check if it is the correct type of inline
+            # Check if it is the correct type of inline
+            if isinstance(instance, AuditableModel):
                 if not instance.created_by_id:
                     instance.created_by = request.user
                 instance.modified_by = request.user
